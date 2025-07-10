@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 import seaborn as sns
 
-df = pd.read_csv('cumulative.csv')
+df = pd.read_csv('../data/cumulative.csv')
 
 # 1) Estatísticas básicas
 score = df['koi_score'].dropna().replace([np.inf, -np.inf], np.nan).dropna()

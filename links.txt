@@ -1,2 +1,3 @@
 Repositório paulotguerra: https://github.com/paulotguerra/QXD0178
 Dados: https://www.kaggle.com/datasets/nasa/kepler-exoplanet-search-results
+Novos dados: https://www.kaggle.com/datasets/melissamonfared/kepler-confirmed-planets
