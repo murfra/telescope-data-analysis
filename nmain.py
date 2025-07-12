@@ -18,6 +18,7 @@ mask = (
     (df_original['pl_orbeccen'].notna()) &
     (df_original['pl_bmassj'] != '') &
     (df_original['pl_radj'].notna()) &
+    (df_original['st_dist'].notna()) &
     (df_original['pl_orbper'].notna()) &
     (df_original['st_teff'].notna())
 )
