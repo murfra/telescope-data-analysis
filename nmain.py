@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
+# -------------------- TAMANHO -------------------------------------
 ############### primeira celula ################
 # 1) Lê o CSV para um DataFrame
 df_original = pd.read_csv('data/planets.csv')
@@ -14,6 +15,7 @@ df_original = pd.read_csv('data/planets.csv')
 mask = (
     (df_original['pl_hostname'] != '') &
     (df_original['pl_dens'].notna()) &
+    (df_original['pl_orbeccen'].notna()) &
     (df_original['pl_bmassj'] != '') &
     (df_original['pl_radj'].notna()) &
     (df_original['pl_orbper'].notna()) &
@@ -105,6 +107,8 @@ ic_upper = p_hat + me
 print(f"IC 95% (Normal): [{ic_lower:.4f}, {ic_upper:.4f}]")
 ################################################
 
+# --------------------- MASSA ---------------------------------
+
 ########### Célula das massas ##################
 # Parâmetros
 coluna = "pl_bmassj"
@@ -163,3 +167,66 @@ ic_upper = p_hat + me
 
 print(f"IC 95% (Normal): [{ic_lower:.4f}, {ic_upper:.4f}]")
 ################################################
+
+# ------------------------ EXCENTRICIDADE ORBITAL (ACHATAMENTO DA ÓRBITA) ------------------------------
+
+########### Célula da Excentridade Orbital ##################
+# Parâmetros
+coluna = "pl_orbeccen"
+x      = 0.0167     # valor alvo (float)
+tol    = 0.01       # tolerância, ex.: ±0.01
+
+mask_e = (df_filtrado[coluna] - x).abs() <= tol
+df_e = df_filtrado[mask_e]
+
+# Média
+media = df_e[coluna].mean()
+
+# Variância amostral
+variancia_amostral = df_e[coluna].var(ddof=1)
+
+# Desvio padrão
+desvio_amostral = df_e[coluna].std(ddof=1)
+ 
+print(f"Cerca de {len(df_e[coluna])} planetas possuem excentridade orbital semelhante a da Terra!")
+print(f"Proporção dos planetas encontrados: {(len(df_e)/len(df_filtrado)) * 100 :.2f}%")
+print(f"Média da excentridade dos planetas: {media:.7f}")
+print(f"Variância (amost.): {variancia_amostral:.7f}")
+print(f"Desvio-padrão (amost.): {desvio_amostral:.7f}")
+ 
+serie = df_e[coluna]
+ 
+# --- plotando histograma ---
+plt.figure(figsize=(8, 5))
+ 
+serie.plot.hist(bins=20, color="skyblue", edgecolor="black")
+plt.title("Histograma das Excentridades")
+plt.xlabel("Excentridade Orbital")
+plt.ylabel("Frequência")
+plt.grid(alpha=0.7)
+plt.show()
+
+menores = (df_r[coluna] < x).mean() * 100
+print(f"Proporção (planetas com excentridade menor que a Terra): {menores:.2f}%")
+print(f"Proporção (planetas com excentridade maior que a Terra): {100 - menores:.2f}%")
+print(f"Proporção com excentridade média de todos os planetas: {media/df_filtrado[coluna].mean():.5f}")
+###############################################
+
+################# IC de Excentridade #################
+
+# Média das excentridades semelhantes à terra / Média das excentricidades orbitais de todos os planetas
+p_hat = media/df_filtrado[coluna].mean()
+alpha = 0.05
+z = norm.ppf(1 - alpha/2)
+
+# Margem de erro
+se = math.sqrt(p_hat * (1 - p_hat) / len(df_filtrado))
+me = z * se
+
+ic_lower = p_hat - me
+ic_upper = p_hat + me
+
+print(f"IC 95% (Normal): [{ic_lower:.4f}, {ic_upper:.4f}]")
+################################################
+
+
