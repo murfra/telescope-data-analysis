@@ -71,6 +71,98 @@ Ao realizar essas comparações, você poderá discutir a probabilidade de encon
 
 ## Lista de Tarefas
 - [x] Tamanho (Raio) e massa
+- [x] Excentridade orbital (já cobre temperatura nas suas implicações)
 - [ ] Distância da Estrela
 - [ ] Período Orbital
-- [ ] Temperatura
+- [x] Temperatura
+
+## Roteiro
+-Apresentação
+ *Se apresentar(individual)
+ *Fonte(base de dados e site)
+ *O que a gente escolheu abordar (tema 2 do trabalho) e detalhamento do Kepler
+ *Exoplanetas (aprofundamento)
+ 
+-Apresentação 
+
+markdown_content = """
+# 📊 Dados dos planetas e das estrelas
+
+## 🌍 Dados relativos aos planetas
+
+| Campo                | Descrição |
+|---------------------|----------|
+| pl_hostname         | Nome da estrela hospedeira |
+| pl_letter           | Letra designando o planeta |
+| pl_discmethod       | Método de descoberta |
+| pl_pnum             | Número de planetas no sistema |
+| pl_orbper           | Período orbital [dias] |
+| pl_orbpererr1       | Incerteza superior do período orbital |
+| pl_orbpererr2       | Incerteza inferior do período orbital |
+| pl_orbperlim        | Flag de limite do período orbital |
+| pl_orbsmax          | Semi-eixo maior da órbita [UA] |
+| pl_orbsmaxerr1      | Incerteza superior do semi-eixo maior |
+| pl_orbsmaxerr2      | Incerteza inferior do semi-eixo maior |
+| pl_orbsmaxlim       | Flag de limite do semi-eixo maior |
+| pl_orbeccen         | Excentricidade orbital |
+| pl_orbeccenerr1     | Incerteza superior da excentricidade |
+| pl_orbeccenerr2     | Incerteza inferior da excentricidade |
+| pl_orbeccenlim      | Flag de limite da excentricidade |
+| pl_orbincl          | Inclinação orbital [graus] |
+| pl_orbinclerr1      | Incerteza superior da inclinação |
+| pl_orbinclerr2      | Incerteza inferior da inclinação |
+| pl_orbincllim       | Flag de limite da inclinação |
+| pl_bmassj           | Massa do planeta ou M*sin(i) [massas de Júpiter] |
+| pl_bmassjerr1       | Incerteza superior da massa |
+| pl_bmassjerr2       | Incerteza inferior da massa |
+| pl_bmassjlim        | Flag de limite da massa |
+| pl_bmassprov        | Procedência dos dados da massa |
+| pl_radj             | Raio do planeta [raios de Júpiter] |
+| pl_radjerr1         | Incerteza superior do raio |
+| pl_radjerr2         | Incerteza inferior do raio |
+| pl_radjlim          | Flag de limite do raio |
+| pl_dens             | Densidade do planeta [g/cm³] |
+| pl_denserr1         | Incerteza superior da densidade |
+| pl_denserr2         | Incerteza inferior da densidade |
+| pl_denslim          | Flag de limite da densidade |
+| pl_ttvflag          | Flag de variação de tempo de trânsito |
+| pl_kepflag          | Flag se faz parte do campo Kepler |
+| pl_k2flag           | Flag se faz parte da missão K2 |
+| pl_nnotes           | Número de notas |
+| ra_str              | Ascensão reta (formato sexagesimal) |
+| ra                  | Ascensão reta (graus) |
+| dec_str             | Declinação (formato sexagesimal) |
+| dec                 | Declinação (graus) |
+
+---
+
+## ⭐ Dados relativos às estrelas
+
+| Campo                | Descrição |
+|---------------------|----------|
+| st_dist             | Distância até a estrela [parsecs] |
+| st_disterr1         | Incerteza superior da distância |
+| st_disterr2         | Incerteza inferior da distância |
+| st_distlim          | Flag de limite da distância |
+| st_optmag           | Magnitude óptica |
+| st_optmagerr        | Incerteza da magnitude óptica |
+| st_optmaglim        | Flag de limite da magnitude óptica |
+| st_optmagblend      | Flag de mistura na magnitude óptica |
+| st_optband          | Banda da magnitude óptica |
+| st_teff             | Temperatura efetiva [K] |
+| st_tefferr1         | Incerteza superior da temperatura |
+| st_tefferr2         | Incerteza inferior da temperatura |
+| st_tefflim          | Flag de limite da temperatura |
+| st_teffblend        | Flag de mistura da temperatura |
+| st_mass             | Massa da estrela [massas solares] |
+| st_masserr1         | Incerteza superior da massa |
+| st_masserr2         | Incerteza inferior da massa |
+| st_masslim          | Flag de limite da massa |
+| st_massblend        | Flag de mistura da massa |
+| st_rad              | Raio da estrela [raios solares] |
+| st_raderr1          | Incerteza superior do raio |
+| st_raderr2          | Incerteza inferior do raio |
+| st_radlim           | Flag de limite do raio |
+| st_radblend         | Flag de mistura do raio |
+
+---
