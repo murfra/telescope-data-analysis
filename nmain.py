@@ -231,3 +231,57 @@ print(f"IC 95% (Normal): [{ic_lower:.4f}, {ic_upper:.4f}]")
 ################################################
 
 
+# ---------------------- PERÍODO ORBITAL -----------------------
+
+# Parâmetros
+coluna = "pl_orbper"
+x      = 365.25     # valor alvo: período orbital da Terra em dias
+tol    = 20         # tolerância: ±20 dias
+
+mask_p = (df_filtrado[coluna] - x).abs() <= tol
+df_p = df_filtrado[mask_p]
+
+# Média
+media = df_p[coluna].mean()
+
+# Variância amostral
+variancia_amostral = df_p[coluna].var(ddof=1)
+
+# Desvio padrão
+desvio_amostral = df_p[coluna].std(ddof=1)
+
+print(f"Cerca de {len(df_p[coluna])} planetas possuem período orbital semelhante ao da Terra!")
+print(f"Proporção dos planetas encontrados: {(len(df_p)/len(df_filtrado)) * 100 :.2f}%")
+print(f"Média do período orbital: {media:.7f} dias")
+print(f"Variância (amost.): {variancia_amostral:.7f}")
+print(f"Desvio-padrão (amost.): {desvio_amostral:.7f}")
+
+# --- plotando histograma ---
+plt.figure(figsize=(8, 5))
+df_p[coluna].plot.hist(bins=20, color="skyblue", edgecolor="black")
+plt.title("Histograma dos Períodos Orbitais")
+plt.xlabel("Período Orbital (dias)")
+plt.ylabel("Frequência")
+plt.grid(alpha=0.7)
+plt.show()
+
+menores = (df_filtrado[coluna] < x).mean() * 100
+maiores = (df_filtrado[coluna] > x).mean() * 100
+print(f"Proporção (planetas com período menor que a Terra): {menores:.2f}%")
+print(f"Proporção (planetas com período maior que a Terra): {maiores:.2f}%")
+print(f"Proporção com período médio em relação ao total: {media/df_filtrado[coluna].mean():.5f}")
+
+# ----------------- IC do Período Orbital -------------------
+
+p_hat = media / df_filtrado[coluna].mean()
+alpha = 0.05
+z = norm.ppf(1 - alpha/2)
+
+# Margem de erro
+se = math.sqrt(p_hat * (1 - p_hat) / len(df_filtrado))
+me = z * se
+
+ic_lower = p_hat - me
+ic_upper = p_hat + me
+
+print(f"IC 95% (Normal): [{ic_lower:.4f}, {ic_upper:.4f}]")
