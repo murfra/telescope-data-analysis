@@ -68,3 +68,9 @@ Você pode comparar os resultados das estatísticas dos exoplanetas descobertos 
 
 ### Conclusão
 Ao realizar essas comparações, você poderá discutir a probabilidade de encontrar planetas semelhantes à Terra e as implicações para a busca de vida extraterrestre. Essa análise não só enriquecerá seu projeto, mas também proporcionará uma compreensão mais profunda da diversidade planetária.
+
+## Lista de Tarefas
+- [x] Tamanho (Raio) e massa
+- [ ] Distância da Estrela
+- [ ] Período Orbital
+- [ ] Temperatura
