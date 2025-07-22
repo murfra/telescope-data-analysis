@@ -1,0 +1,29 @@
+Antes de executar o projeto, certifique-se de ter instalado:
+- Visual Studio Code (VSCode):
+    - Jupyter (Um Extension Pack que instala 4 extensões)
+- Python 3
+
+O ambiente virtual é necessário apenas para instalar as bibliotecas usadas
+no projeto. Caso já tenha instalado essas bibliotecas em seu sistema utilizando
+pip, não é preciso criar um ambiente virtual e ativá-lo, embora seja
+recomendado.
+
+Ao abrir a pasta do projeto no VSCode, abra o terminal e execute os seguintes
+comandos:
+1. python -m venv venv
+2. source venv/bin/activate       (No Linux)
+2. .\venv\Scripts\activate.bat    (No Windows)
+3. pip install -r requirements.txt
+
+Caso o comando acima para ativar o venv não funcione, busque na internet como
+ativar ele no seu sistema operacional.
+
+Feito isso, você pode executar célula por célula ou executar todas de uma vez.
+Talvez o VSCode peça pra instalar uma outra biblioteca para poder executar.
+Instale-a e, ao ser requisitado a escolha de um kernel, escolha a pasta venv.
+
+Estrutura do Projeto:
+- data/
+    - planets.csv         (dados dos exoplanetas)
+- main_alt.ipynb          (arquivo alternativo)
+- main.ipynb              (arquivo principal)
