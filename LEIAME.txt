@@ -25,5 +25,17 @@ Instale-a e, ao ser requisitado a escolha de um kernel, escolha a pasta venv.
 Estrutura do Projeto:
 - data/
     - planets.csv         (dados dos exoplanetas)
-- main_alt.ipynb          (arquivo alternativo)
 - main.ipynb              (arquivo principal)
+
+Sobre o Código:
+Na segunda célula, a variável mask trata de desconsiderar algumas colunas que
+não possuem valor. No entanto, algumas colunas não usadas para os cálculos
+feitos no projeto. Isso significa dizer que, caso queira aumentar o número da
+amostra, basta comentar algumas linhas que filtram colunas não importantes.
+Por exemplo, a coluna pl_num, pl_hostname e pl_orbincl não são utilizadas e
+podem ser comentadas, o que talvez aumente o número da amostra modificando
+os valores encontrados. Há também alguns trechos de código comentados que podem
+ser descomentados caso queira ver o resultado.
+
+Link Para os Dados Utilizados:
+https://www.kaggle.com/datasets/melissamonfared/kepler-confirmed-planets
